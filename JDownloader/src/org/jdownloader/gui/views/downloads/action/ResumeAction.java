@@ -1,0 +1,29 @@
+package org.jdownloader.gui.views.downloads.action;
+
+import java.awt.event.ActionEvent;
+
+import jd.controlling.downloadcontroller.DownloadWatchDog;
+import jd.plugins.DownloadLink;
+import jd.plugins.FilePackage;
+
+import org.jdownloader.controlling.contextmenu.CustomizableTableContextAppAction;
+import org.jdownloader.gui.translate._GUI;
+
+public class ResumeAction extends CustomizableTableContextAppAction<FilePackage, DownloadLink> {
+
+    private static final long   serialVersionUID = 8087143123808363305L;
+
+    private final static String NAME             = _GUI._.gui_table_contextmenu_resume();
+
+    public ResumeAction() {
+        setIconKey("resume");
+        setName(NAME);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (!isEnabled()) {
+            return;
+        }
+        DownloadWatchDog.getInstance().resume(getSelection().getChildren());
+    }
+}

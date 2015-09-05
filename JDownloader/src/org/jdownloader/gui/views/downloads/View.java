@@ -1,0 +1,37 @@
+package org.jdownloader.gui.views.downloads;
+
+import javax.swing.Icon;
+
+import org.jdownloader.gui.IconKey;
+import org.jdownloader.gui.translate._GUI;
+import org.jdownloader.images.NewTheme;
+
+public enum View {
+    RUNNING(_GUI._.downloadview_running(), "media-playback-start"),
+    ALL(_GUI._.downloadview_all(), "download"),
+    SKIPPED(_GUI._.downloadview_skipped(), "skipped"),
+    FAILED(_GUI._.downloadview_failed(), "error"),
+    EXISTS(_GUI._.downloadview_exists(), "false"),
+    OFFLINE(_GUI._.downloadview_offline(), "false"),
+    SUCCESSFUL(_GUI._.downloadview_successful(), "ok"),
+    TODO(_GUI._.downloadview_todo(), IconKey.ICON_WAIT);
+    private String label;
+    private String iconKey;
+
+    public String getLabel() {
+        return label;
+    }
+
+    private View(String translation, String iconKey) {
+        this.label = translation;
+        this.iconKey = iconKey;
+    }
+
+    public Icon getIcon() {
+        return NewTheme.I().getIcon(iconKey, 18);
+    }
+
+    public String getIconKey() {
+        return iconKey;
+    }
+}
